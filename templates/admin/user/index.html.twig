@@ -1,0 +1,47 @@
+
+{% extends 'adminbase.html.twig' %}
+    {% block title %}Üye Listesi  {% endblock %}
+                            {% block content %}
+                                <div class="col-lg-10">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h2> Üye Listesi <small><a href="{{ path('admin_user_new') }}" class="btn btn-primary">Üye Ekleme</a></small>
+                                            </h2>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="table-responsive table-bordered">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Adı Soyası</th>
+                                                        <th>E-Mail</th>
+                                                        <th>Durum</th>
+                                                        <th>Türü</th>
+                                                        <th>Düzenle</th>
+                                                        <th>Sil</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for row in users %}
+                                                        <tr>
+                                                            <td>{{ row.id }}</td>
+                                                            <td>{{ row.name }}</td>
+                                                            <td>{{ row.email }}</td>
+                                                            <td>{{ row.status }}</td>
+                                                            <td>
+                                                                {% for item in row.roles %}
+                                                                    {{ item }}
+                                                                {% endfor %}
+                                                            </td>
+                                                            <td><a href="{{ path ('admin_user_edit',{'id':row.id}) }}"><button class="btn btn-primary"><i class="icon-pencil icon-white"></i> Düzenle</button></a> </td>
+                                                            <td> <a href="{{ path ('admin_user_delete',{'id':row.id}) }}"> <button class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')"><i class="icon-remove icon-white"></i> Sil</button></a></td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endblock %}

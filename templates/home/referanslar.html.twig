@@ -1,0 +1,18 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} Hakkımızda {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="">
+            <p>
+                {{ data[0].referances|raw }}
+            </p>
+            <div class="row"></div>
+        </div>
+
+
+    </div>
+{% endblock %}

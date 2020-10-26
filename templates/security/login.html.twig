@@ -1,0 +1,50 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} Login -  {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="row">
+        <div class="">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            User Name: {{ app.user.name}}<hr>
+            User EMail: {{ app.user.email }}
+            User Roles : {% for item in app.user.roles %}{{ item }}<br>
+            {% endfor %}
+            <hr>
+            {%  else  %}
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="col-sm-5 col-sm-offset-1">
+                    <h1 class="h3 mb-3 font-weight-normal">Kullanıcı Girişi</h1>
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                </div>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <br><br><br><br><br><br>
+
+                <button  class="btn btn-lg btn-primary" type="submit">Giriş Yap </button>
+
+
+            </form>
+            </p>
+            <div class="row"></div>
+        </div>
+        {% endif %}
+
+
+    </div>
+{% endblock %}
+

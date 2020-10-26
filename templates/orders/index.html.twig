@@ -1,0 +1,49 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Orders List{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('home') }}">Home</a><span class="divider">/</span> </li>
+        <li><a href="">Order List</a><span class="divider">/</span> </li>
+        <li class="active">Preview</li>
+    </ul>
+    <div class="well well-sm">
+        <div>
+            {{ include ('messages.html.twig') }}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>City</th>
+                    <th>Phone</th>
+                    <th>Shipinfo</th>
+                    <th>Status</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.phone }}</td>
+                        <td>{{ order.shipinfo }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            <a href="{{ path('orders_show', {'id': order.id}) }}">show</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">Bu klasöre uygun içerik yok</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

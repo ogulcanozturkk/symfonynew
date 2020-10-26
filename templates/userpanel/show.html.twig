@@ -1,0 +1,42 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Profil Bilgileri{% endblock %}
+
+{% block content %}
+    <h4>Üye Bilgileri</h4>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ app.user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ app.user.name}}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ app.user.address}}</td>
+            </tr>
+            <tr>
+                <th>Şehir</th>
+                <td>{{ app.user.city}}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ app.user.phone}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ app.user.status}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}

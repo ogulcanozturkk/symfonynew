@@ -1,0 +1,55 @@
+
+{% extends 'adminbase.html.twig' %}
+    {% block title %}Kategori Listesi  {% endblock %}
+   {% block content %}
+       <div class="col-lg-10">
+           <div class="panel panel-default">
+               <div class="panel-heading">
+                   <h2> Kategori Listesi <small><a href="{{ path('admin_category_new') }}" class="btn btn-primary">Kategori Ekleme</a></small>
+                   </h2>
+               </div>
+               <div class="panel-body">
+                   <div class="table-responsive table-bordered">
+                       <table class="table">
+                           <thead>
+                           <tr>
+                               <th>Id</th>
+                               <th>Parentid</th>
+                               <th>Title</th>
+                               <th>Keywords</th>
+                               <th>Description</th>
+                               <th>Status</th>
+                               <th>Göster</th>
+                               <th>Düzenle</th>
+                               <th>Sil</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           {% for category in categories %}
+                               <tr>
+                                   <td>{{ category.id }}</td>
+                                   <td>{{ category.parentid }}</td>
+                                   <td>{{ category.title }}</td>
+                                   <td>{{ category.keywords }}</td>
+                                   <td>{{ category.description }}</td>
+                                   <td>{{ category.status }}</td>
+                                   <td>
+                                       <a href="{{ path('admin_category_show', {'id': category.id}) }}" class="btn btn-info class=icon-pencil icon-white">Göster</a>
+                                   </td><td>
+                                       <a href="{{ path('admin_category_edit', {'id': category.id,'pid': category.parentid}) }}" class="btn btn-primary class=icon-pencil icon-white">Düzenle</a>
+                                   </td><td>
+                                       {{ include ('admin/category/_delete_form.html.twig') }}
+                                   </td>
+                               </tr>
+                           {% else %}
+                               <tr>
+                                   <td colspan="7">no records found</td>
+                               </tr>
+                           {% endfor %}
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+       </div>
+   {% endblock %}

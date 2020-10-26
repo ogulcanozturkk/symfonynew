@@ -1,0 +1,17 @@
+
+{% extends 'adminbase.html.twig' %}
+    {% block title %}Ürün Ekle {% endblock %}
+   {% block content %}
+<div class="col-lg-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2> Ürün Ekle</h2>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive table-bordered">
+    {{ include('admin/product/_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

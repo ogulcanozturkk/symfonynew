@@ -1,0 +1,38 @@
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items"><!--features_items-->
+        <h2 class="title text-center">Yeni Ürünler</h2>
+        {%  for product in products %}
+            <form name="shopcart" class="form-horizontal" action="{{ path('shopcart_new') }}" method="post">
+                <input type="hidden" name="shopcart[quantity]" class="" value="1" placeholder="Miktar" max="{{ product.amount }}">
+                <input type="hidden" name="shopcart[productid]" value="{{ product.id }}" >
+               <input type="hidden" name="_csrf_token" value="{{ csrf_token('add-item') }}">
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img src="{{ asset('uploads') }}/images/{{ product.image }}" alt="" />
+                    </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <h2>{{  product.sprice }} TL</h2>
+                            <p>{{ product.title }}</p>
+                            <p>{{ product.description }}</p>
+
+                            <a href="{{ path('product_detail', {'id': product.id }) }}"><button type="button"  class="btn btn-default get">Ürünü İncele</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </form>
+        {% endfor %}
+
+
+    </div><!--features_items-->
+
+
+
+
+</div>

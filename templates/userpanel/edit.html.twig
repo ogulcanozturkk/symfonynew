@@ -1,0 +1,18 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Profili Düzenle{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('home') }}">Home</a><span class="divider"></span> </li>
+        <li><a href="">Shopcart Items</a><span class="divider"></span> </li>
+        <li class="active">Preview</li>
+    </ul>
+    <div class="well well-sm">
+        <div class="row">
+            {{ include ('userpanel/_form.html.twig',{'button_label': 'Update'}) }}
+        </div>
+    </div>
+
+
+{% endblock %}

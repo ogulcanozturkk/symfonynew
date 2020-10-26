@@ -1,0 +1,57 @@
+
+{% extends 'adminbase.html.twig' %}
+
+                    {% block title %}Üye Ekleme {% endblock %}
+
+                    {% block content %}
+                        <form>
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="box box-info">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title"> Yeni Üye Ekleme </h3>
+                                            </div>
+                                        </div>
+
+                                        <form role="form" method="post">
+                                            <div class="form-group">
+                                                <label>Adı Soyadı</label>
+                                                <input type="text" name="user[name]" class="form-control" placeholder="Adı Soyadı">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>E-Mail</label>
+                                                <input type="email" name="user[email]" class="form-control"  placeholder="E-Mail Adresiniz">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Şifre</label>
+                                                <input type="password" name="user[password]" class="form-control"  placeholder="Şifrenizi Girin">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Türü </label>
+                                                <select name="user[roles]" class="form-control">
+                                                    <option>ROLE_ADMIN</option>
+                                                    <option>ROLE_USER</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Aktif Durumu </label>
+                                                <select name="user[status]" class="form-control">
+                                                    <option>True</option>
+                                                    <option>False</option>
+                                                </select>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success">Kaydet</button>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    {% endblock %}
